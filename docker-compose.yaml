@@ -1,0 +1,16 @@
+services:
+
+    quickdrop:
+        image: roastslav/quickdrop:latest
+        container_name: quickdrop
+        restart: unless-stopped 
+        ports:
+            - "8543:8080"
+        volumes:
+            - ./qdrop/db:/app/db
+            - ./qdrop/log:/app/log
+            - ./qdrop/files:/app/files
+        environment:
+            - max_upload_file_size=2GB
+            - app_enable_password=true   # false
+            - app_basic_password=c0ntrasen4
